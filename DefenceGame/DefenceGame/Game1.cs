@@ -1,17 +1,28 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace DefenceGame
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        new List<BasicEnemy> basiclist;
+        public Rectangle EnemyHitbox;
+        BasicEnemy basicEnemy;
+
+        int position;
+
+        int BasicEnemyAmount = 1;
+
+        Random rnd = new Random();
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -19,21 +30,56 @@ namespace DefenceGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            basiclist = new List<BasicEnemy>();
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
 
+        public void CreateEnemy(int position)
+        {
+            if (position == 1)
+            {
+                basiclist.Add
+            }
+            else if (position == 2)
+            {
+
+            }
+            else
+            {
+                
+            }
+        }
+
+        //The Waves ---------------------------------------------------------------------
+        public void Wave1()
+        {
+
+
+        }
+
+        public void Wave2()
+        {
+
+        }
+
+        //Update ------------------------------------------------------------------------
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if (BasicEnemyAmount > 0)
+            {
+                CreateEnemy(1);
+                BasicEnemyAmount--;
+            }
 
             // TODO: Add your update logic here
 
@@ -43,7 +89,10 @@ namespace DefenceGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
+            spriteBatch.End();
+            
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
