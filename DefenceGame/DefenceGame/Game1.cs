@@ -11,7 +11,9 @@ namespace DefenceGame
         new List<BasicEnemy> basiclist;
         public Rectangle EnemyHitbox;
         BasicEnemy basicEnemy;
-
+        Rectangle path1;
+        Rectangle path2;
+        Texture2D texturePath;
         int position;
 
         int BasicEnemyAmount = 1;
@@ -30,23 +32,23 @@ namespace DefenceGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            basiclist = new List<BasicEnemy>();
-
             base.Initialize();
+            basiclist = new List<BasicEnemy>();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             // TODO: use this.Content to load your game content here
+            
+            path1 = new Rectangle(1, 1, 300, 50);
         }
 
         public void CreateEnemy(int position)
         {
             if (position == 1)
             {
-                basiclist.Add
+                
             }
             else if (position == 2)
             {
@@ -90,7 +92,7 @@ namespace DefenceGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-
+            spriteBatch.Draw(texturePath, path1, Color.White);
             spriteBatch.End();
             
             // TODO: Add your drawing code here
