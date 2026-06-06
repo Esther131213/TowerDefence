@@ -11,8 +11,6 @@ namespace DefenceGame
         new List<BasicEnemy> basiclist;
         public Rectangle EnemyHitbox;
         BasicEnemy basicEnemy;
-        Rectangle path1;
-        Rectangle path2;
         Texture2D texturePath;
         int position;
 
@@ -40,8 +38,6 @@ namespace DefenceGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
-            
-            path1 = new Rectangle(1, 1, 300, 50);
         }
 
         public void CreateEnemy(int position)
@@ -92,7 +88,6 @@ namespace DefenceGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            spriteBatch.Draw(texturePath, path1, Color.White);
             spriteBatch.End();
             
             // TODO: Add your drawing code here
