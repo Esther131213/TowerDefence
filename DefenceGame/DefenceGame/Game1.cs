@@ -40,6 +40,7 @@ namespace DefenceGame
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            AssetManager.LoadTextures(Content);
             // TODO: use this.Content to load your game content here
         }
 
