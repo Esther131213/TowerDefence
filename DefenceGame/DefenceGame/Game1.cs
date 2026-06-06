@@ -4,15 +4,17 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using Spline;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DefenceGame
 {
     public class Game1 : Game
     {
+        public int TotalMoney = 0;
         new List<BasicEnemy> basiclist;
         public Rectangle EnemyHitbox;
         BasicEnemy basicEnemy;
-        Texture2D texturePath;
+        BasicTowerClass basicTowerClass;
         int position;
 
         int BasicEnemyAmount = 1;
@@ -89,8 +91,8 @@ namespace DefenceGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+            spriteBatch.Draw(AssetManager.towerTex1, new Vector2(0,0), Color.White);
             spriteBatch.End();
-            
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
