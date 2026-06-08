@@ -25,7 +25,7 @@ namespace DefenceGame
             this.hitbox.Height = hitbox.Height;
         }
 
-        public void Update()
+        public void Update(GameTime gameitme)
         {
             hitbox.X = (int)position.X;
             hitbox.Y = (int)position.Y;

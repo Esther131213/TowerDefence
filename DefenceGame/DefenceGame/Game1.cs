@@ -16,6 +16,7 @@ namespace DefenceGame
         private BasicEnemy basicEnemy;
         private BasicTowerClass basicTowerClass;
         int position;
+        int i;
 
         int BasicEnemyAmount = 1;
 
@@ -36,13 +37,14 @@ namespace DefenceGame
             base.Initialize();
             EnemyHitbox.Height = 30;
             EnemyHitbox.Width = 30;
-            basiclist = new List<BasicEnemy>();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             AssetManager.LoadTextures(Content);
+            basiclist = new List<BasicEnemy>();
+            CreateEnemy(1);
             // TODO: use this.Content to load your game content here
         }
 
@@ -50,15 +52,12 @@ namespace DefenceGame
         {
             if (position == 1)
             {
-                basiclist.Add(new BasicEnemy(1f, 10, 10, new Vector2(0,0), EnemyHitbox));
+                var enemy = new BasicEnemy(0.01f, 10, 10, new Vector2(0, 0), EnemyHitbox);
+                basiclist.Add(enemy);
             }
             else if (position == 2)
             {
 
-            }
-            else
-            {
-                
             }
         }
 
@@ -90,7 +89,7 @@ namespace DefenceGame
 
             foreach (BasicEnemy enemy in basiclist)
             {
-                enemy.Update();
+                enemy.Update(gameTime);
             }
         }
 
@@ -99,7 +98,7 @@ namespace DefenceGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             //spriteBatch.Draw(AssetManager.towerTex1, new Vector2(0,0), Color.White);
-            foreach(var basicEnemy in basiclist)
+            foreach(BasicEnemy enemy in basiclist)
             {
                 basicEnemy.Draw(spriteBatch);
             }
