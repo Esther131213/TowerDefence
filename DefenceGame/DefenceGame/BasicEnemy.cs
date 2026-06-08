@@ -9,21 +9,20 @@ namespace DefenceGame
 {
     internal class BasicEnemy
     {
-        int speed;
+        float speed;
         int attackDmg;
         int health;
         public Vector2 position;
         public Rectangle hitbox;
 
-        public BasicEnemy(int speed, int attackDmg, int health, Vector2 position, Rectangle hitbox)
+        public BasicEnemy(float speed, int attackDmg, int health, Vector2 position, Rectangle hitbox)
         {
             this.speed = speed;
             this.attackDmg = attackDmg;
             this.health = health;
             this.position = position;
-            hitbox.X = (int)position.X;
-            hitbox.Y = (int)position.Y;
-
+            this.hitbox.Width = hitbox.Width;
+            this.hitbox.Height = hitbox.Height;
         }
 
         public void Update()
@@ -37,9 +36,9 @@ namespace DefenceGame
             }
         }
 
-        public void EnemyDraw(SpriteBatch spritebatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            spritebatch.Draw(null, hitbox, Color.Red);
+            spriteBatch.Draw(AssetManager.towerTex1, hitbox, Color.Red);
         }
     }
 }

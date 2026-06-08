@@ -13,8 +13,8 @@ namespace DefenceGame
         public int TotalMoney = 0;
         new List<BasicEnemy> basiclist;
         public Rectangle EnemyHitbox;
-        BasicEnemy basicEnemy;
-        BasicTowerClass basicTowerClass;
+        private BasicEnemy basicEnemy;
+        private BasicTowerClass basicTowerClass;
         int position;
 
         int BasicEnemyAmount = 1;
@@ -34,6 +34,8 @@ namespace DefenceGame
         {
             // TODO: Add your initialization logic here
             base.Initialize();
+            EnemyHitbox.Height = 30;
+            EnemyHitbox.Width = 30;
             basiclist = new List<BasicEnemy>();
         }
 
@@ -48,7 +50,7 @@ namespace DefenceGame
         {
             if (position == 1)
             {
-                
+                basiclist.Add(new BasicEnemy(1f, 10, 10, new Vector2(0,0), EnemyHitbox));
             }
             else if (position == 2)
             {
@@ -82,17 +84,25 @@ namespace DefenceGame
                 CreateEnemy(1);
                 BasicEnemyAmount--;
             }
-
             // TODO: Add your update logic here
 
             base.Update(gameTime);
+
+            foreach (BasicEnemy enemy in basiclist)
+            {
+                enemy.Update();
+            }
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            spriteBatch.Draw(AssetManager.towerTex1, new Vector2(0,0), Color.White);
+            //spriteBatch.Draw(AssetManager.towerTex1, new Vector2(0,0), Color.White);
+            foreach(var basicEnemy in basiclist)
+            {
+                basicEnemy.Draw(spriteBatch);
+            }
             spriteBatch.End();
             // TODO: Add your drawing code here
 
